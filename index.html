@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projeto A.E.G.I.S. — RPG Original</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #120018;
+      --panel: #1a0026;
+      --accent: #b84dff;
+      --accent-dark: #7a1fc2;
+      --text: #f2e9ff;
+      --muted: #bfa6d9;
+      --danger: #ff4da6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: radial-gradient(circle at top, #0b1220, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(180deg, #0f1b2e, #070c16);
+      border-bottom: 2px solid var(--accent-dark);
+      padding: 20px;
+    }
+
+    header h1 {
+      color: var(--accent);
+      letter-spacing: 4px;
+      font-size: 28px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: transparent;
+      border: 1px solid var(--accent-dark);
+      color: var(--accent);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: var(--accent-dark);
+      color: #000;
+    }
+
+    main {
+      padding: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section {
+      display: none;
+      background: var(--panel);
+      border: 1px solid #142038;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.05);
+    }
+
+    section.active { display: block; }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .log {
+      background: #050a14;
+      border-left: 4px solid var(--accent);
+      padding: 12px;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .alert {
+      border-left-color: var(--danger);
+      color: #ffb3b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid #142038;
+    }
+
+    .status {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: #070e1a;
+      border: 1px solid #142038;
+      padding: 15px;
+    }
+
+    .card h3 {
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PROJETO A.E.G.I.S.</h1>
+    <p>Arquivo Classificado • RPG Original de Ficção Tecno‑Sombria</p>
+    <nav>
+      <button onclick="openSection('inicio')">INÍCIO</button>
+      <button onclick="openSection('mundo')">O MUNDO</button>
+      <button onclick="openSection('faccoes')">FACÇÕES</button>
+      <button onclick="openSection('sistema')">SISTEMA RPG</button>
+      <button onclick="openSection('registros')">REGISTROS</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="inicio" class="active">
+      <h2>ACESSO CONCEDIDO</h2>
+      <div class="log">
+        > Inicializando Protocolo A.E.G.I.S...<br>
+        > Integridade do Arquivo: 92%<br>
+        > Usuário identificado como: OPERADOR
+      </div>
+      <p>
+        <strong>A.E.G.I.S.</strong> é um RPG criado do zero onde os jogadores
+        assumem o papel de agentes enviados para conter anomalias, entidades
+        e tecnologias proibidas após o colapso de múltiplas realidades.
+      </p>
+    </section>
+
+    <section id="mundo">
+      <h2>O MUNDO</h2>
+      <p>
+        Após o evento conhecido como <em>Fenda Zero</em>, a realidade passou
+        a apresentar falhas: cidades que não existem, criaturas sem origem
+        e máquinas que pensam sozinhas.
+      </p>
+      <div class="status">
+        <div class="card">
+          <h3>NÍVEL DE COLAPSO</h3>
+          <p>ALTO</p>
+        </div>
+        <div class="card">
+          <h3>ZONAS AFETADAS</h3>
+          <p>47 Confirmadas</p>
+        </div>
+        <div class="card">
+          <h3>REALIDADES ATIVAS</h3>
+          <p>Instável</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faccoes">
+      <h2>FACÇÕES</h2>
+      <ul>
+        <li><strong>A.E.G.I.S.</strong> — Última linha de defesa da realidade.</li>
+        <li><strong>O Culto do Eco</strong> — Humanos que veneram as anomalias.</li>
+        <li><strong>Diretório Ômega</strong> — Corporação que explora o colapso.</li>
+      </ul>
+    </section>
+
+    <section id="sistema">
+      <h2>SISTEMA RPG</h2>
+      <p>
+        Sistema narrativo com dados d10.
+        Os personagens possuem 4 atributos:
+      </p>
+      <ul>
+        <li>Corpo</li>
+        <li>Mente</li>
+        <li>Técnica</li>
+        <li>Vontade</li>
+      </ul>
+      <p>
+        Testes: <strong>1d10 + atributo</strong> contra a Dificuldade.
+        Falhas críticas podem gerar Anomalias Pessoais.
+      </p>
+    </section>
+
+    <section id="registros">
+      <h2>REGISTROS CLASSIFICADOS</h2>
+      <div class="log alert">
+        > ALERTA: Entidade [SEM NOME] escapou do Setor C‑12
+      </div>
+      <div class="log">
+        > Registro #044: Agente desaparecido após contato visual.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Projeto A.E.G.I.S. • RPG Original • Arquivo Ficcional
+  </footer>
+
+  <script>
+    function openSection(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
