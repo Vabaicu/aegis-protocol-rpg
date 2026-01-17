@@ -49,12 +49,20 @@
     }
 
     nav button {
-      background: transparent;
+      background: linear-gradient(135deg, #2a003d, #120018);
       border: 1px solid var(--accent-dark);
       color: var(--accent);
-      padding: 8px 14px;
+      padding: 10px 18px;
       cursor: pointer;
       transition: 0.3s;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(184, 77, 255, 0.2);
+    }
+
+    nav button:hover {
+      background: var(--accent);
+      color: #120018;
+      box-shadow: 0 0 20px rgba(184, 77, 255, 0.6);
     }
 
     nav button:hover {
@@ -70,11 +78,18 @@
 
     section {
       display: none;
-      background: var(--panel);
-      border: 1px solid #142038;
-      padding: 25px;
+      background: linear-gradient(180deg, #1a0026, #0d0014);
+      border: 1px solid #3a0a5e;
+      padding: 30px;
       margin-bottom: 25px;
-      box-shadow: 0 0 25px rgba(0, 229, 255, 0.05);
+      box-shadow: 0 0 35px rgba(184, 77, 255, 0.15);
+      border-radius: 18px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     section.active { display: block; }
@@ -101,10 +116,11 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 12px;
       color: var(--muted);
-      border-top: 1px solid #142038;
+      border-top: 1px solid #3a0a5e;
+      background: #0b0012;
     }
 
     .status {
@@ -115,15 +131,51 @@
     }
 
     .card {
-      background: #070e1a;
-      border: 1px solid #142038;
-      padding: 15px;
+      background: linear-gradient(160deg, #220033, #120018);
+      border: 1px solid #3a0a5e;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: inset 0 0 15px rgba(184, 77, 255, 0.08);
     }
 
     .card h3 {
       color: var(--accent);
       font-size: 14px;
       margin-bottom: 6px;
+    }
+  input, textarea {
+      width: 100%;
+      background: #0b0014;
+      border: 1px solid #7a1fc2;
+      color: #f2e9ff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 4px;
+      margin-bottom: 10px;
+      outline: none;
+      box-shadow: inset 0 0 8px rgba(184, 77, 255, 0.15);
+    }
+
+    input:focus, textarea:focus {
+      border-color: #b84dff;
+      box-shadow: 0 0 12px rgba(184, 77, 255, 0.6);
+    }
+
+    button {
+      background: linear-gradient(135deg, #7a1fc2, #b84dff);
+      border: none;
+      color: #120018;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(184, 77, 255, 0.6);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(184, 77, 255, 0.9);
     }
   </style>
 </head>
@@ -134,12 +186,12 @@
     <p>Arquivo Classificado • RPG Original de Ficção Tecno‑Sombria</p>
     <nav>
       <button onclick="openSection('inicio')">INÍCIO</button>
-      <button onclick="openSection('mundo')">O MUNDO</button>
+      <button onclick="openSection('inicio')">INÍCIO</button>
+      <button onclick="openSection('mundo_novo')">O MUNDO</button>
       <button onclick="openSection('faccoes')">FACÇÕES</button>
       <button onclick="openSection('sistema')">SISTEMA RPG</button>
+      <button onclick="openSection('ficha_nova')">FICHA</button>
       <button onclick="openSection('registros')">REGISTROS</button>
-      <button onclick="openSection('mundo_editavel')">O MUNDO+</button>
-      <button onclick="openSection('ficha')">FICHA</button>
     </nav>
   </header>
 
@@ -159,42 +211,26 @@
       </p>
     </section>
 
-    <section id="mundo">
-      <h2>O MUNDO</h2>
-      <p>
-        Após o evento conhecido como <em>Fenda Zero</em>, a realidade sofreu
-        rupturas irreversíveis. Cidades passaram a existir em estados
-        sobrepostos, o tempo se tornou inconsistente e entidades sem origem
-        definida começaram a surgir.
-      </p>
-      <p>
-        A humanidade sobrevive em enclaves monitorados, enquanto zonas
-        externas — chamadas de <strong>Áreas Mortas</strong> — são dominadas
-        por anomalias, cultos e tecnologia fora de controle.
-      </p>
-      <div class="status">
-        <div class="card">
-          <h3>NÍVEL DE COLAPSO</h3>
-          <p>ALTO</p>
-        </div>
-        <div class="card">
-          <h3>ZONAS AFETADAS</h3>
-          <p>47 Confirmadas</p>
-        </div>
-        <div class="card">
-          <h3>CONTENÇÃO GLOBAL</h3>
-          <p>FALHA PARCIAL</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="mundo_editavel">
-      <h2>O MUNDO (EDITÁVEL)</h2>
-      <p>Este campo pode ser alterado pelo mestre para adaptar a campanha.</p>
-      <textarea id="worldText" style="width:100%;height:200px;background:#050014;color:#f2e9ff;border:1px solid #7a1fc2;padding:10px;"></textarea>
-      <br><br>
-      <button onclick="saveWorld()">Salvar Mundo</button>
-    </section>
+    <section id="mundo_novo">
+  <h2>ESTADO DA REALIDADE</h2>
+  <div class="card">
+    <p>
+      O mundo de <strong>Projeto A.E.G.I.S.</strong> existe após a <em>Fenda Zero</em>,
+      um colapso dimensional que rasgou a realidade. O céu falha, cidades se
+      repetem, memórias não pertencem às pessoas certas.
+    </p>
+    <p>
+      A A.E.G.I.S. atua como uma força de contenção, explorando Áreas Mortas,
+      recuperando artefatos e neutralizando entidades que violam as leis
+      da existência.
+    </p>
+    <p>
+      O texto abaixo é <strong>totalmente editável</strong> pelo mestre.
+    </p>
+  </div>
+  <textarea id="worldText" placeholder="Descreva seu mundo, cidades, eras, ameaças..."></textarea>
+  <button onclick="saveWorld()">Salvar Mundo</button>
+</section>
 
     <section id="faccoes">
       <h2>FACÇÕES</h2>
@@ -233,33 +269,52 @@
       </div>
     </section>
 
-    <section id="ficha">
-      <h2>FICHA DO PERSONAGEM</h2>
-      <p>Todos os campos são editáveis e salvos no navegador.</p>
+    <section id="ficha_nova">
+  <h2>FICHA DE AGENTE</h2>
 
-      <label>Nome do Agente</label><br>
-      <input id="nome" /><br><br>
+  <div class="status">
+    <div class="card">
+      <h3>DADOS BÁSICOS</h3>
+      <label>Nome</label>
+      <input id="nome">
+      <label>Função</label>
+      <input id="classe">
+    </div>
 
-      <label>Classe / Função</label><br>
-      <input id="classe" /><br><br>
+    <div class="card">
+      <h3>ATRIBUTOS</h3>
+      <label>Corpo</label>
+      <input type="number" id="corpo">
+      <label>Mente</label>
+      <input type="number" id="mente">
+      <label>Técnica</label>
+      <input type="number" id="tecnica">
+      <label>Vontade</label>
+      <input type="number" id="vontade">
+    </div>
 
-      <label>Corpo</label><br>
-      <input type="number" id="corpo" /><br><br>
+    <div class="card">
+      <h3>STATUS</h3>
+      <label>Vida</label>
+      <input type="number" id="vida">
+      <label>Sanidade</label>
+      <input type="number" id="sanidade">
+    </div>
+  </div>
 
-      <label>Mente</label><br>
-      <input type="number" id="mente" /><br><br>
+  <div class="card">
+    <h3>ANOMALIAS & NOTAS</h3>
+    <textarea id="obs"></textarea>
+  </div>
 
-      <label>Técnica</label><br>
-      <input type="number" id="tecnica" /><br><br>
+  <div class="card">
+    <h3>ROLAGEM DE DADOS</h3>
+    <button onclick="rollD10()">Rolar 1d10</button>
+    <p id="diceResult"></p>
+  </div>
 
-      <label>Vontade</label><br>
-      <input type="number" id="vontade" /><br><br>
-
-      <label>Anomalias / Observações</label><br>
-      <textarea id="obs" style="width:100%;height:120px;"></textarea><br><br>
-
-      <button onclick="saveFicha()">Salvar Ficha</button>
-    </section>
+  <button onclick="saveFicha()">Salvar Ficha</button>
+</section>
 
   </main>
 
